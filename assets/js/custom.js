@@ -29,24 +29,26 @@ $("body").on("change", ".js-switch", function () {
 
 
 })
-
+let $dataurl = "";
+let $id = "";
 $(".dltbtn").on("click", function (e) {
-    let $dataurl= $(this).data("url");
-    let $id = $(this).data("id");
-    /* alert($id); */
-    e.preventDefault();
+
+    $dataurl = $(this).data("url");
+    $id = $(this).data("id");
+    /*  e.preventDefault(); */
     $('#confirmModal').modal("show")
-    $('#delete').on("click", function (e) {
-        
-        $.get($dataurl, { }, function (response) {
 
-            /* alert(response); */
+})
+$('#delete').on("click", function (e) {
 
-            $('#confirmModal').modal("hide")
-            $("#t"+$id).removeAttr('class');
-            $("#t"+$id).css("background-color", "red").delay(500);
-            $("#t"+$id).animate({ opacity: "hide" }, "slow");;
+    $.get($dataurl, {}, function (response) {
 
-        })
+        /* alert(response); */
+
+        $('#confirmModal').modal("hide")
+        $("#t" + $id).removeAttr('class');
+        $("#t" + $id).css("background-color", "red").delay(500);
+        $("#t" + $id).animate({ opacity: "hide" }, "slow");;
+
     })
 })
